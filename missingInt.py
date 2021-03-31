@@ -22,12 +22,11 @@ def solution(A):
         else: return min_positive
     
     min_positive +=1
-
     return min_positive
 
 # A = [-1, 3]
 # A = [1, 3, 6, 4, 1, 2]
 # A = [1, 3, 6, 4, 1, 5,2]
 # A = [-2,3,2,-22,2,1,43,234234,99292, ]
-A =[-1000000, 1000000]
-print(solution(A))
+# A =[-1000000, 1000000]
+# print(solution(A))
