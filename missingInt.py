@@ -5,7 +5,6 @@ def solution(A):
         return 1
     
     vals = set(filter(lambda x: (x > 0), A))
-
     
     if len(vals) == 0 or len(vals) == 1 and 1 not in vals:
         return 1
