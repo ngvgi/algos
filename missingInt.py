@@ -19,7 +19,7 @@ def solution(A):
         if min_positive in vals:
             i+=1
             continue        
-        else: return min_positive
+        return min_positive
     
     min_positive +=1
     return min_positive
