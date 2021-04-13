@@ -1,18 +1,48 @@
+""" 
+
+A valid number can be split up into these components (in order):
+
+A decimal number or an integer.
+(Optional) An 'e' or 'E', followed by an integer.
+A decimal number can be split up into these components (in order):
+
+(Optional) A sign character (either '+' or '-').
+One of the following formats:
+At least one digit, followed by a dot '.'.
+At least one digit, followed by a dot '.', followed by at least one digit.
+A dot '.', followed by at least one digit.
+An integer can be split up into these components (in order):
+
+(Optional) A sign character (either '+' or '-').
+At least one digit.
+For example, all the following are valid numbers: ["2", "0089", "-0.1", "+3.14", "4.", "-.9", "2e10", "-90E3", "3e+7", "+6e-1", "53.5e93", "-123.456e789"], while the following are not valid numbers: ["abc", "1a", "1e", "e3", "99e2.5", "--6", "-+3", "95a54e53"].
+
+Given a string s, return true if s is a valid number.
+
+"""
+
+
 import re
-class Solution:
-    def validNum(self, s: str) -> bool:
-        if len(s) < 1 or len(s) > 20:
-            return 'Cannot tell'
-        # single digit
-        if len(s) == 1:
-            try:
-                int(s)
-                return True
-            except:
-                return False
+class Solution:    
+    def isNumber(self, s: str) -> bool:
+        decimal_check = "(\+|-)?(\d+\.{1}|\d+\.{1}\d+|\.{1}\d+)"
+        integer_check = "(\+|-)?\d+(e|E)?(\+|-)?\d+"
+        # is_decimal = re.match(decimal_check, s)
+        # is_integer = re.match(integer_check, s)
+
+        vals = ["abc", "1a", "1e", "e3", "99e2.5", "6", "-+3", "95a54e53","-9.34"]
+
+        for val in vals:
+            if re.match(decimal_check, val):
+                print('{}  => Decimal'.format(val))
+            elif  re.match(integer_check, val):
+                print("{}  => Integer".format(val))
+            else:
+                print('{}  => Invalid'.format(val))
+
         
-        # alphabets = set(A,a,B,b,C,c,D,d,F,f,G,g,H,h,I,i,J,j,K,k,L,l,M,m,N,n,O,o,P,p,Q,q,R,r,S,s,T,t,U,u,V,v,W,w,X,x,Y,y,Z,z)
-        letters = re.compile('[a-dA-D][f-zF-Z]')
+        
+        return 'Complete Parse'
 
 
-print(Solution().validNum('+8'))
+print(Solution().isNumber('p+8'))
