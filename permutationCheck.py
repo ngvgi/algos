@@ -7,16 +7,16 @@ def solution(A):
     if len(A) == 1 and 1 in A:
         return 1
 
+    # to ensure number appears only once
     hash = dict()
-
     for i in range(len(A)):
         hash[A[i]] = hash.get(A[i], 0) + 1
-
     appearances = hash.values()
     unique_appearances = set(appearances)
-
     if len(unique_appearances) > 1:
         return 0
+    
+    #main code
 
     loops = 0
     elements = set(A)
