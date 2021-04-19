@@ -26,17 +26,17 @@ import re
 class Solution:    
     def isNumber(self, s: str) -> bool:
         decimal_check = "(\+|-)?(\d+\.{1}|\d+\.{1}\d+|\.{1}\d+)"
-        integer_check = "(\+|-)?\d+(e|E)?(\+|-)?\d+"
+        integer_check = "(\+|-)?\d+((e|E)?(\+|-)?\d+)?"
+        # "(\+|-)?\d+((e|E)?(\+|-)?\d+)?"
         # is_decimal = re.match(decimal_check, s)
         # is_integer = re.match(integer_check, s)
+        validityCheck = "(((\+|-)?(\d+\.{1}|\d+\.{1}\d+|\.{1}\d+)(e|E)?((\+|-)?\d+)?)|(\+|-)?(\d)+((e|E)?((\+|-)?\d)+)?)"
 
         vals = ["abc", "1a", "1e", "e3", "99e2.5", "6", "-+3", "95a54e53","-9.34"]
 
         for val in vals:
-            if re.match(decimal_check, val):
-                print('{}  => Decimal'.format(val))
-            elif  re.match(integer_check, val):
-                print("{}  => Integer".format(val))
+            if re.match(validityCheck, val):
+                print('{}  => Valid'.format(val))
             else:
                 print('{}  => Invalid'.format(val))
 
