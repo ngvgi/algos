@@ -30,9 +30,9 @@ class Solution:
         # "(\+|-)?\d+((e|E)?(\+|-)?\d+)?"
         # is_decimal = re.match(decimal_check, s)
         # is_integer = re.match(integer_check, s)
-        validityCheck = "(((\+|-)?(\d+\.{1}|\d+\.{1}\d+|\.{1}\d+)(e|E)?((\+|-)?\d+)?)|(\+|-)?(\d)+((e|E)?((\+|-)?\d)+)?)"
+        validityCheck = "(((\+|-)?(\d+\.{1}|\d+\.{1}\d+|\.{1}\d+)(e|E)?((\+|-)?\d+)?)|((\+|-)?\d+((e|E)?(\+|-)?\d+)?))"
 
-        vals = ["abc", "1a", "1e", "e3", "99e2.5", "6", "-+3", "95a54e53","-9.34"]
+        vals = ["abc", "1a", "1e", "e3", "99e2.5", "--6", "-+3", "95a54e53"]
 
         for val in vals:
             if re.match(validityCheck, val):
