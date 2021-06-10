@@ -2,14 +2,7 @@ import csv
 import random
 import datetime
 import exrex
-
-"""
-    amound paid to company on date at time
-    sent to company for account on date at time. New Mp
-    sent to fname lname phone on date at time
-    You have received amount from copmany account on date at time
-    your mshwari loan has been approved on date time and amount has been deposited to your m-pesa account
-"""
+import time
 
 
 def company_list():
@@ -65,10 +58,7 @@ def generate_phone_no():
 
 
 def generate_mpesa_code():
-    code = ''
-    for i in range(1, 11):
-        character = exrex.getone('([A-Z]|\d)')
-        code += character
+    code = exrex.getone('([A-Z]|\d){10}')
     return code
 
 
@@ -109,23 +99,22 @@ def mshwari_received():
 
 
 def write_csv():
+    start_time = time.time()
     functions = [sent_to_company, paid_to_company,
                  sent_to_person, received_from_person, mshwari_received]
-    data = []
 
-    for i in range(20000):
-        body = random.choice(functions)()
-        balance = generate_amount()
-        code = generate_mpesa_code()
-        message = "{} confirmed. {}. New M-PESA balance is {}".format(
-            code, body, balance)
-        data.append(message)
-
-    with open('info.csv', 'w') as csv_file:
+    with open('info.csv', 'a') as csv_file:
         writer = csv.writer(csv_file, delimiter=',', quotechar='"')
 
-        for i in data:
-            writer.writerow([i])
+        for i in range(20000):
+            body = random.choice(functions)()
+            balance = generate_amount()
+            code = generate_mpesa_code()
+            message = "{} confirmed. {}. New M-PESA balance is {}".format(
+                code, body, balance)
+            writer.writerow([message])
+
+    print("--- %.2f seconds ---" % (time.time() - start_time))
 
 
 write_csv()
