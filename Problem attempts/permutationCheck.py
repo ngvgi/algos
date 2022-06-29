@@ -4,6 +4,7 @@ def solution(A):
 
     if len(A) == 1 and 1 not in A:
         return 0
+
     if len(A) == 1 and 1 in A:
         return 1
 
@@ -15,8 +16,8 @@ def solution(A):
     unique_appearances = set(appearances)
     if len(unique_appearances) > 1:
         return 0
-    
-    #main code
+
+    # main code
 
     loops = 0
     elements = set(A)
