@@ -1,6 +1,6 @@
 
 class Node:
-    def __init__(self, data=None) -> None:
+    def __init__(self, data: int = None) -> None:
         self.data = data
         self.next = None
 
@@ -9,13 +9,13 @@ class linked_list:
     def __init__(self) -> None:
         self.head = Node()
 
-    def append(self, data):
+    def append(self, data: int) -> None:
         curr = self.head
         while curr.next:
             curr = curr.next
         curr.next = Node(data)
 
-    def length(self):
+    def length(self) -> int:
         length = 0
         curr = self.head
         while curr.next:
