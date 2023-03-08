@@ -1,0 +1,1 @@
+exports.moduleVal = 'This text is from the module';
