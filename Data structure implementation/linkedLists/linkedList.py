@@ -68,6 +68,23 @@ class linked_list:
             return
 
         curr.next = None
+    
+    def insert(self, after:int, val:int) -> None:
+        if self.length == 0:
+            return 'List is empty, cannot insert at position'
+        
+        curr_val = self.head
+
+        while curr_val.data != after:
+            curr_val = curr_val.next
+            if curr_val.next == None:
+                print ('Cannot find element to insert after')
+                return
+                    
+        new_node = Node(val)
+        new_node.next = curr_val.next
+        curr_val.next = new_node
+
 
 
 ll = linked_list()
@@ -76,11 +93,18 @@ ll.append(23)
 ll.append(3)
 ll.append(54)
 ll.print_list()
+
+ll.insert(2, 6)
+ll.print_list()
+
 ll.delete(2)
 ll.print_list()
+
 ll.delete(2)
 ll.print_list()
+
 ll.delete(2)
 ll.print_list()
+
 ll.delete(1)
 ll.print_list()

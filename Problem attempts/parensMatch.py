@@ -3,6 +3,7 @@ def solution(s):
         return True
     opening = ['(', '{', '[']
     closing = [')', '}', ']']
+    
     char_array = []
 
     for i in range(0, len(s)):
